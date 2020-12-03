@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import './createNewBook.scss';
-import { required, maxStringLength, maxNumLength, numbers } from "../../../../utils/validators/validators";
+import { required, maxStringLength, maxNumLength, numberOnly, name } from "../../../../utils/validators/validators";
 import { Input, createField } from './formControls.js/formControls';
 
 import styled, { keyframes } from 'styled-components';
@@ -16,9 +16,9 @@ const  NewBookForm = (props) =>  {
             <form onSubmit={props.handleSubmit}>
                 <h5>Add Some Book</h5>
                 <div>
-                {createField("text", "Provie an author name", "authorName", [required, maxStringLength], Input, "col-12 form-control authorName")}
+                {createField("text", "Provie an author name", "authorName", [required, maxStringLength, name], Input, "col-12 form-control authorName")}
                 {createField("text", "Provie a book title", "bookTitle", [required, maxStringLength], Input, "col-12 form-control booktitle")}
-                {createField("text", "Provie a publication date", "publicationDate", [required, maxNumLength, numbers], Input, "col-12 form-control publicationDate")}
+                {createField("text", "Provie a publication date", "publicationDate", [required, maxNumLength, numberOnly], Input, "col-12 form-control publicationDate")}
                 </div>
                 <button type="submit" className={"btn btn-primary mt-2"} >Add Book</button>
             </form>
