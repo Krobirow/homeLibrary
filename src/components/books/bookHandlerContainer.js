@@ -8,14 +8,10 @@ import { reset } from 'redux-form';
 
 class BookHandlerContainer extends React.Component {
   onFormSubmit = (formData) => {
-    console.log("we got here ");
-    console.log(formData);
     const {authorName, bookTitle, publicationDate} = formData;
-    console.log(authorName, bookTitle, publicationDate);
     
     this.props.addBook(authorName, bookTitle, publicationDate);
     this.props.resetForm();
-
   }
 
   render() {

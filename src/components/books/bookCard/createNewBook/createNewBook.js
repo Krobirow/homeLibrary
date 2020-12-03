@@ -5,6 +5,7 @@ import { required, maxStringLength, maxNumLength, numbers } from "../../../../ut
 import { Input, createField } from './formControls.js/formControls';
 
 const  NewBookForm = (props) =>  {
+    console.log(props);
         return (
             <form className={"card col-xl-4 col-lg-4 col-md-5 col-sm-5 col-12  no-gutters p-3"}  onSubmit={props.handleSubmit}>
                 <h5>Add Some Book</h5>

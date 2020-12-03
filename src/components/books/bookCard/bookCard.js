@@ -3,7 +3,6 @@ import './bookCard.scss';
 import CreateNewBook from './createNewBook/createNewBook';
 
 const BookCard = ({books, filteredBooks, onFormSubmit, removeBook}) => {
-    console.log(books);
     const eachCard = filteredBooks.map(oneBook => {
         return (
             <div key={oneBook.id} className={`${filteredBooks.length <= 1 ? "col-12 mb-3 mt-3" : (books.books.length === 2) ? "col-6 mb-3 mt-3" : "col-xl-3 col-lg-4 col-md-5 col-sm-5 col-12 mb-3 mt-3"} `}>

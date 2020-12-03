@@ -2,8 +2,8 @@ import React from 'react';
 import { Field } from 'redux-form';
 import "./formControls.scss";
 
-export const FormControl = ({ input, meta: {active, error}, children, ...props}) => {
-    const hasError = active && error;
+export const FormControl = ({ input, meta: {touched, error}, children, ...props}) => {
+	const hasError = touched && error;
 	return (
         <>
             <div className={"formControl input-group my-1 " + (hasError ? "error" : "")}>

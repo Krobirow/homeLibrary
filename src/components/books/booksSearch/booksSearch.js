@@ -1,5 +1,4 @@
 import React from 'react';
-// import { searchBook } from '../../../reduxStore/searchBookReducer';
 import './booksSearch.scss';
 
 export default class BooksSearch extends React.Component {
@@ -35,8 +34,6 @@ export default class BooksSearch extends React.Component {
                 input.focus();
             }, 200)
         }
-
-        console.log(this.InputRef);
     }
     searchRemove() {
         const search = this.SearchRef.current;
@@ -44,7 +41,6 @@ export default class BooksSearch extends React.Component {
         input.value = '';
         input.focus();
         search.classList.remove('searching');
-        // this.props.searchBookAC("");
     }
 
     searchHide(event) {
@@ -55,8 +51,6 @@ export default class BooksSearch extends React.Component {
         search.classList.remove('searching');
         input.value = '';
         }
-
-        // this.props.searchBookAC("");
     }
 
     toggleSearch(e){
