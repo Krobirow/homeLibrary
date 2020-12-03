@@ -16,9 +16,9 @@ const  NewBookForm = (props) =>  {
             <form onSubmit={props.handleSubmit}>
                 <h5>Add Some Book</h5>
                 <div>
-                {createField("text", "Provie an author name", "authorName", [required, maxStringLength, name], Input, "col-12 form-control authorName")}
-                {createField("text", "Provie a book title", "bookTitle", [required, maxStringLength], Input, "col-12 form-control booktitle")}
-                {createField("text", "Provie a publication date", "publicationDate", [required, maxNumLength, numberOnly], Input, "col-12 form-control publicationDate")}
+                {createField("text", "Provide an author name", "authorName", [required, maxStringLength, name], Input, "col-12 form-control authorName")}
+                {createField("text", "Provide a book title", "bookTitle", [required, maxStringLength], Input, "col-12 form-control booktitle")}
+                {createField("text", "Provide a publication date", "publicationDate", [required, maxNumLength, numberOnly], Input, "col-12 form-control publicationDate")}
                 </div>
                 <button type="submit" className={"btn btn-primary mt-2"} >Add Book</button>
             </form>
