@@ -1,0 +1,94 @@
+// start search styles
+div.search {
+    display: block;
+    position: relative;
+    width: 300px;
+}
+div.search {
+  input::placeholder {
+    color: transparent;
+    padding-left: 10px;
+  }
+}
+div.search.active {
+  input::placeholder {
+    color:#b58900;
+    padding-left: 10px;
+  }
+}
+  .magnifyingGlass {
+    position: relative;
+    transition: transform 500ms;
+    margin-top: 15px;
+  }
+  div.search.active svg.magnifyingGlass {
+    transform: translateX(-7%);
+  }
+  .magnifyingGlassPath {
+    fill:none;
+    stroke-dasharray: 210 808;
+    stroke-linecap:round;
+    stroke-width:6;
+    stroke:#fff;
+    transition: stroke-dasharray 500ms, stroke-dashoffset 500ms;
+  }
+  .search.active .magnifyingGlassPath {
+    stroke-dasharray: 580 808;
+    stroke-dashoffset: -224px;
+  }
+  .x {
+    fill:none;
+    stroke-dasharray: 56 92;
+    stroke-dashoffset: -92px;
+    stroke-linecap:round;
+    stroke-width:6;
+    stroke:#fff;
+    transition: stroke-dashoffset 500ms;
+    visibility: hidden;
+  }
+  .search.active .x {
+    visibility: visible;
+  }
+  .search.searching .x {
+    stroke-dashoffset: 0;
+  }
+  input.searchInput {
+    background-color: transparent;
+    border: 0;
+    font-size: 1.2em;
+    left: 20px;
+    outline: 0 !important;
+    position: absolute;
+    top: 25px;
+    color: white;
+  }
+  .overlay {
+    background: rgba(0,0,0,0);
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    transition: background 300ms;
+  }
+  .overlay1 {
+    height: 64px;
+    left: -15px;
+    top: 0;
+    width: 64px;
+  }
+  .overlay2 {
+    height: 38px;
+    right: 22px;
+    top: 15px;
+    width: 38px;
+  }
+  .overlay:hover {
+    background: rgba(0,0,0,0.08);
+  }
+  .search.active .overlay1 {
+    visibility: hidden;
+  }
+  .search:not(.active) .overlay2,
+  .search:not(.searching) .overlay2 {
+    visibility: hidden;
+  }
+  // end search styles
