@@ -3,19 +3,15 @@ import './bookCard.scss';
 import CreateNewBook from './createNewBook/createNewBook';
 
 import styled, { keyframes } from 'styled-components';
-import { fadeInRight, zoomInUp } from 'react-animations';
+import { fadeInDown } from 'react-animations';
 
-const fadeInRightAN = keyframes`${fadeInRight}`;
-const FadeInRightDiv = styled.div`animation: 1s ${fadeInRightAN};`;
-
-const zoomInUpAN = keyframes`${zoomInUp}`;
-const ZoomInUpDiv = styled.div`animation: 1s ${zoomInUpAN};`;
-
+const fadeInDownAN = keyframes`${fadeInDown}`;
+const FadeInDownDiv = styled.div`animation: 1s ${fadeInDownAN};`;
 
 const BookCard = ({books, filteredBooks, onFormSubmit, removeBook}) => {
     const eachCard = filteredBooks.map(oneBook => {
         return (
-            <FadeInRightDiv key={oneBook.id} ><div key={oneBook.id} className={`${filteredBooks.length <= 1 ? "col-12 mb-3 mt-3" : (books.books.length === 2) ? "col-xl-3 col-lg-4 col-md-5 col-sm-5 col-12 mb-3 mt-3" : "col-xl-3 col-lg-4 col-md-5 col-sm-5 col-12 mb-3 mt-3"} `}>
+            <FadeInDownDiv key={oneBook.id} className={`${filteredBooks.length <= 1 ? "col-12 mb-3 mt-3" : (books.books.length === 2) ? "col-xl-3 col-lg-4 col-md-5 col-sm-5 col-12 mb-3 mt-3" : "col-xl-3 col-lg-4 col-md-5 col-sm-5 col-12 mb-3 mt-3"} `}>
                 <div className="cardWrapper card row no-gutters">
                     <div className="offset-md-1 col-md-10 d-flex flex-column justify-content-between">
                         <div className="card-body">
@@ -35,8 +31,7 @@ const BookCard = ({books, filteredBooks, onFormSubmit, removeBook}) => {
                         <button type="button" className="btn btn-success mb-3" onClick={() => {removeBook(oneBook.id)}}>Remove Book</button>
                     </div>
                 </div>
-            </div>
-            </FadeInRightDiv>
+            </FadeInDownDiv>
         )
     }, removeBook);
 
