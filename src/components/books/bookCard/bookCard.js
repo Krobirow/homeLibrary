@@ -2,10 +2,20 @@ import React from 'react';
 import './bookCard.scss';
 import CreateNewBook from './createNewBook/createNewBook';
 
+import styled, { keyframes } from 'styled-components';
+import { fadeInRight, zoomInUp } from 'react-animations';
+
+const fadeInRightAN = keyframes`${fadeInRight}`;
+const FadeInRightDiv = styled.div`animation: 1s ${fadeInRightAN};`;
+
+const zoomInUpAN = keyframes`${zoomInUp}`;
+const ZoomInUpDiv = styled.div`animation: 1s ${zoomInUpAN};`;
+
+
 const BookCard = ({books, filteredBooks, onFormSubmit, removeBook}) => {
     const eachCard = filteredBooks.map(oneBook => {
         return (
-            <div key={oneBook.id} className={`${filteredBooks.length <= 1 ? "col-12 mb-3 mt-3" : (books.books.length === 2) ? "col-xl-3 col-lg-4 col-md-5 col-sm-5 col-12 mb-3 mt-3" : "col-xl-3 col-lg-4 col-md-5 col-sm-5 col-12 mb-3 mt-3"} `}>
+            <FadeInRightDiv key={oneBook.id} ><div key={oneBook.id} className={`${filteredBooks.length <= 1 ? "col-12 mb-3 mt-3" : (books.books.length === 2) ? "col-xl-3 col-lg-4 col-md-5 col-sm-5 col-12 mb-3 mt-3" : "col-xl-3 col-lg-4 col-md-5 col-sm-5 col-12 mb-3 mt-3"} `}>
                 <div className="cardWrapper card row no-gutters">
                     <div className="offset-md-1 col-md-10 d-flex flex-column justify-content-between">
                         <div className="card-body">
@@ -26,6 +36,7 @@ const BookCard = ({books, filteredBooks, onFormSubmit, removeBook}) => {
                     </div>
                 </div>
             </div>
+            </FadeInRightDiv>
         )
     }, removeBook);
 
@@ -33,7 +44,7 @@ const BookCard = ({books, filteredBooks, onFormSubmit, removeBook}) => {
         <div className="row no-gutters">
             {eachCard.length >= 1 ? eachCard : <div className={"col-12 d-flex justify-content-center my-3"}>No results found, but You can add a new book</div>}
             <div className={"col-12 d-flex justify-content-center"}>
-                <CreateNewBook onSubmit={onFormSubmit} />
+                    <CreateNewBook onSubmit={onFormSubmit} />
             </div>
         </div>
     );
