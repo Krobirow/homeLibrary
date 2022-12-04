@@ -1,6 +1,6 @@
 module.exports = {
     // change to .tsx if necessary
-    entry: './src/components/app/App.js',
+    entry: './src/index.tsx',
     output: {
 			filename: './bundle.js'
     },
@@ -22,5 +22,5 @@ module.exports = {
       "react-dom": "ReactDOM",
     },
     // addition - add source-map support
-    devtool: "source-map"
+    devtool: "source-map",
   }

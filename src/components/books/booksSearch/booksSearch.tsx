@@ -1,9 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 import './booksSearch.scss';
 
-export default class BooksSearch extends React.Component {
+export default class BooksSearch extends React.Component<any, any> {
+  private SearchRef: React.RefObject<HTMLDivElement>;
+  private InputRef: React.RefObject<HTMLInputElement>;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.SearchRef = React.createRef();
     this.InputRef = React.createRef();
@@ -19,54 +21,54 @@ export default class BooksSearch extends React.Component {
   inputFocus() {
     const search = this.SearchRef.current;
     const input = this.InputRef.current;
-    search.classList.toggle('active');
-    if (search.classList.contains('active')) {
+    search?.classList.toggle('active');
+    if (search?.classList.contains('active')) {
       setTimeout(() => {
-        input.focus();
+        input?.focus();
       }, 200)
     }
   }
   searchFocus() {
     const search = this.SearchRef.current;
     const input = this.InputRef.current;
-    if (search.classList.contains('active')) {
+    if (search?.classList.contains('active')) {
       setTimeout(() => {
-        input.focus();
+        input?.focus();
       }, 200)
     }
   }
   searchRemove() {
     const search = this.SearchRef.current;
     const input = this.InputRef.current;
-    input.value = '';
-    input.focus();
-    search.classList.remove('searching');
+    if (input) input.value = '';
+    input?.focus();
+    search?.classList.remove('searching');
   }
 
   searchHide(event) {
     const search = this.SearchRef.current;
     const input = this.InputRef.current;
-    if (!search.contains(event.target) && input.value.length === 0) {
+    if (search && !search.contains(event.target) && input && input.value.length === 0) {
       search.classList.remove('active');
       search.classList.remove('searching');
       input.value = '';
     }
   }
 
-  toggleSearch(e) {
+  toggleSearch(e: React.ChangeEvent<HTMLInputElement>) {
     const search = this.SearchRef.current;
     if (e.target.value.length > 0) {
-      search.classList.add(`searching`)
+      search?.classList.add(`searching`)
     } else {
-      search.classList.remove(`searching`)
+      search?.classList.remove(`searching`)
     }
     this.props.searchBookAC(e.target.value);
   }
 
-  bodyListenerRemoveSearch(e) {
+  bodyListenerRemoveSearch(e: { target: Node | null; }) {
     const search = this.SearchRef.current;
     const input = this.InputRef.current;
-    if (!search.contains(e.target) && input.value.length === 0) {
+    if (search && !search.contains(e.target) && input && input.value.length === 0) {
       search.classList.remove('active');
       search.classList.remove('searching');
       input.value = '';

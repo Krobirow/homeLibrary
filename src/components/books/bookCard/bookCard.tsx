@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import './bookCard.scss';
 import CreateNewBook from './createNewBook/createNewBook';
 
