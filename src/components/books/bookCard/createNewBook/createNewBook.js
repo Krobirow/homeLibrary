@@ -11,28 +11,28 @@ const ZoomInUpDiv = styled.div`animation: 1s ${zoomInUpAN};`;
 
 
 const  NewBookForm = (props) =>  {
-        return (
-            
-            <form onSubmit={props.handleSubmit}>
-                <h5>Add Some Book</h5>
-                <div>
-                {createField("text", "Provide an author name", "authorName", [required, maxStringLength, name], Input, "col-12 form-control authorName")}
-                {createField("text", "Provide a book title", "bookTitle", [required, maxStringLength], Input, "col-12 form-control booktitle")}
-                {createField("text", "Provide a publication date", "publicationDate", [required, maxNumLength, numberOnly], Input, "col-12 form-control publicationDate")}
-                </div>
-                <button type="submit" className={"btn btn-primary mt-2"} >Add Book</button>
-            </form>
-        );
+		return (
+			
+			<form onSubmit={props.handleSubmit}>
+				<h5>Add Some Book</h5>
+				<div>
+				{createField("text", "Provide an author name", "authorName", [required, maxStringLength, name], Input, "col-12 form-control authorName")}
+				{createField("text", "Provide a book title", "bookTitle", [required, maxStringLength], Input, "col-12 form-control booktitle")}
+				{createField("text", "Provide a publication date", "publicationDate", [required, maxNumLength, numberOnly], Input, "col-12 form-control publicationDate")}
+				</div>
+				<button type="submit" className={"btn btn-primary mt-2"} >Add Book</button>
+			</form>
+		);
 }
 
 const ReduxNewBookForm =  reduxForm({form:"formCreateNewBook"})(NewBookForm);
 
 const CreateNewBook = (props) => {
-    return (
-        <ZoomInUpDiv className="card col-xl-4 col-lg-4 col-md-5 offset-sm-1 col-sm-10 col-12 no-gutters p-3">
-            <ReduxNewBookForm onSubmit={props.onSubmit} />
-        </ZoomInUpDiv>
-    );
+	return (
+		<ZoomInUpDiv className="card col-xl-4 col-lg-4 col-md-5 offset-sm-1 col-sm-10 col-12 no-gutters p-3">
+			<ReduxNewBookForm onSubmit={props.onSubmit} />
+		</ZoomInUpDiv>
+	);
 }
 
 

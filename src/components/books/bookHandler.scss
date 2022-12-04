@@ -1,8 +1,10 @@
+$max767: "only screen and (max-width: 767px)";
+
 .bookHandlerContainer {
     min-height: 90vh;
     margin-top: 6vh;  
     margin-bottom: 6vh; 
-    @media screen and(min-width: 767px) {
+    @media #{max767} {
         margin-top: 3vh;
         margin-bottom: 3vh;
         min-height: 90vh;
