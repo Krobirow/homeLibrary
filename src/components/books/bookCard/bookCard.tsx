@@ -4,14 +4,17 @@ import CreateNewBook from './createNewBook/createNewBook';
 
 import styled, { keyframes } from 'styled-components';
 import { fadeInDown } from 'react-animations';
+import { BookCardProps, CardTypes } from '../booksInterfaces';
 
 const fadeInDownAN = keyframes`${fadeInDown}`;
 const FadeInDownDiv = styled.div`animation: 1s ${fadeInDownAN};`;
 
-const BookCard = ({ books, filteredBooks, onFormSubmit, removeBook }) => {
-  const eachCard = filteredBooks.map(oneBook => {
+
+const BookCard = ({ books, filteredBooks, onFormSubmit, removeBook }: BookCardProps) => {
+  const eachCard = filteredBooks.map((oneBook : CardTypes) => {
+
     return (
-      <FadeInDownDiv key={oneBook.id} className={`${filteredBooks.length <= 1 ? "col-12 mb-3 mt-3" : (books.books.length === 2) ? "col-xl-3 col-lg-4 col-md-5 col-sm-12 col-12 mb-3 mt-3" : "col-xl-3 col-lg-4 col-md-5 col-sm-12 col-12 mb-3 mt-3"} `}>
+      <FadeInDownDiv key={oneBook.id} className={`${filteredBooks.length <= 1 ? "col-12 mb-3 mt-3" : (books.books.length >= 2) ? "col-xl-3 col-lg-4 col-md-5 col-sm-12 col-12 mb-3 mt-3" : "col-xl-3 col-lg-4 col-md-5 col-sm-12 col-12 mb-3 mt-3"} `}>
         <div className="cardWrapper card row no-gutters">
           <div className="offset-md-1 col-md-10 d-flex flex-column justify-content-between">
             <div className="card-body">

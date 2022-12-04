@@ -45,7 +45,7 @@ export default class BooksSearch extends React.Component<any, any> {
     search?.classList.remove('searching');
   }
 
-  searchHide(event) {
+  searchHide(event: any):void {
     const search = this.SearchRef.current;
     const input = this.InputRef.current;
     if (search && !search.contains(event.target) && input && input.value.length === 0) {
@@ -55,7 +55,7 @@ export default class BooksSearch extends React.Component<any, any> {
     }
   }
 
-  toggleSearch(e: React.ChangeEvent<HTMLInputElement>) {
+  toggleSearch(e: React.ChangeEvent<HTMLInputElement>):void {
     const search = this.SearchRef.current;
     if (e.target.value.length > 0) {
       search?.classList.add(`searching`)
@@ -65,7 +65,7 @@ export default class BooksSearch extends React.Component<any, any> {
     this.props.searchBookAC(e.target.value);
   }
 
-  bodyListenerRemoveSearch(e: { target: Node | null; }) {
+  bodyListenerRemoveSearch(e: any):void {
     const search = this.SearchRef.current;
     const input = this.InputRef.current;
     if (search && !search.contains(e.target) && input && input.value.length === 0) {

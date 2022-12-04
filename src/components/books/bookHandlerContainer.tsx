@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
+
 import BookCard from './bookCard/bookCard';
 import './bookHandler.scss';
 import BooksSearch from './booksSearch/booksSearch';
 import {addBook, removeBook, searchBook } from '../../reduxStore/bookHandlerReducer';
 import { reset } from 'redux-form';
+import { BookHandlerContainerProps, CardTypes, FormDataType } from './booksInterfaces';
 
-class BookHandlerContainer extends React.Component<any, any> {
-  onFormSubmit = (formData) => {
+
+class BookHandlerContainer extends React.Component<BookHandlerContainerProps, any> {
+  onFormSubmit = (formData: FormDataType):void => {
     const {authorName, bookTitle, publicationDate} = formData;
     
     this.props.addBook(authorName, bookTitle, publicationDate);
@@ -15,7 +20,7 @@ class BookHandlerContainer extends React.Component<any, any> {
   }
 
   render() {
-    const filteredBooks = this.props.books.books.filter(book => {
+    const filteredBooks = this.props.books.books.filter((book:CardTypes) => {
       return book.bookTitle.toLowerCase().includes(this.props.books.inputValue.toLowerCase())
     });
 
@@ -28,18 +33,18 @@ class BookHandlerContainer extends React.Component<any, any> {
   }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: any) => {
 	return {
     books: state.bookHandlerReducer,
 	}
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<void, any, AnyAction>) => {
   return {
-    searchBook: (value) => dispatch(searchBook(value)),
-    addBook: (authorName, bookTitle, publicationDate) => dispatch(addBook(authorName, bookTitle, publicationDate)),
-    removeBook: (bookId) => dispatch(removeBook(bookId)),
-    resetForm: () => dispatch(reset('formCreateNewBook'))
+    searchBook: (value: string):any => dispatch(searchBook(value)),
+    addBook: (authorName: string, bookTitle: string, publicationDate: number):any => dispatch(addBook(authorName, bookTitle, publicationDate)),
+    removeBook: (bookId: number):any => dispatch(removeBook(bookId)),
+    resetForm: ():any => dispatch(reset('formCreateNewBook'))
   }
 }
 
