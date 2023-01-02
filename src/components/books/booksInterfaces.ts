@@ -6,13 +6,13 @@ export type CardTypes = {
 }
 
 export type BookCardProps = {
-  readonly books: {
+  books: {
     inputValue: string,
     books: Array<CardTypes>
   },
-  readonly filteredBooks: Array<CardTypes>, 
-  readonly onFormSubmit: Function, 
-  readonly removeBook: Function,
+  filteredBooks: Array<CardTypes>, 
+  onFormSubmit: Function, 
+  removeBook: Function,
 }
 
 export type FormDataType = {
@@ -26,8 +26,15 @@ export type BookHandlerContainerProps = {
   resetForm: Function,
   searchBook: Function,
   removeBook: Function,
-  readonly books: {
+  books: {
     inputValue: string,
     books: Array<CardTypes>
   },
+}
+export interface BooksSearchProps {
+  books: {
+    inputValue: string,
+    books: Array<CardTypes>
+  },
+  searchBookAC: Function
 }

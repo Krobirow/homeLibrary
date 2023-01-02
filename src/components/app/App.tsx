@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import './App.scss';
 import store from '../../reduxStore/redux-store';
 
-const App = () => {
+const App:React.FC = () => {
   return (
     <Provider store={store}>
       <div className="App d-flex justify-content-center row">
