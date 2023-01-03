@@ -22,10 +22,10 @@ export type FormDataType = {
 }
 
 export type BookHandlerContainerProps = {
-  addBook: Function,
+  addBook: (authorName: string, bookTitle: string, publicationDate: number) => any,
   resetForm: Function,
-  searchBook: Function,
-  removeBook: Function,
+  searchBook: (bookId: string) => any,
+  removeBook: (inputValue: string) => any,
   books: {
     inputValue: string,
     books: Array<CardTypes>

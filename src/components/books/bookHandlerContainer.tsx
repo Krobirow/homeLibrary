@@ -15,10 +15,10 @@ class BookHandlerContainer extends React.Component<BookHandlerContainerProps, {}
   onFormSubmit = (formData: FormDataType): void => {
     const { authorName, bookTitle, publicationDate } = formData;
 
-    this.props.addBook(authorName, bookTitle, publicationDate);
+    this.props.addBook(authorName, bookTitle, +publicationDate);
     this.props.resetForm();
   }
-
+  
   render() {
     const filteredBooks = this.props.books.books.filter((book: CardTypes) => {
       return book.bookTitle.toLowerCase().includes(this.props.books.inputValue.toLowerCase())
@@ -41,9 +41,9 @@ let mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<void, any, AnyAction>) => {
   return {
-    searchBook: (value: string): any => dispatch(searchBook(value)),
+    searchBook: (bookId: string): any => dispatch(searchBook(bookId)),
     addBook: (authorName: string, bookTitle: string, publicationDate: number): any => dispatch(addBook(authorName, bookTitle, publicationDate)),
-    removeBook: (bookId: number): any => dispatch(removeBook(bookId)),
+    removeBook: (bookId: string): any => dispatch(removeBook(bookId)),
     resetForm: (): any => dispatch(reset('formCreateNewBook'))
   }
 }

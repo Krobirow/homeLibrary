@@ -1,9 +1,15 @@
-const ADD_BOOK = "ADD_BOOK";
-const REMOVE_BOOK = "REMOVE_BOOK";
-const SEARCH_BOOK = "SEARCH_BOOK";
+import { AnyAction } from "@reduxjs/toolkit";
+import { CardTypes } from "../components/books/booksInterfaces";
+
+enum BooksActionsEnum {
+  ADD_BOOK = "ADD_BOOK",
+  REMOVE_BOOK = "REMOVE_BOOK",
+  SEARCH_BOOK = "SEARCH_BOOK",
+}
 
 let initialState = {
   inputValue: "",
+  bookId: null as string | null,
   books: [
     {
       id: 1,
@@ -35,12 +41,14 @@ let initialState = {
       bookTitle: "Dirk Gently's Holistic Detective Agency",
       publicationDate: 1987
     },
-  ],
-};
+  ] as Array<CardTypes>,
+}
 
-const bookHandlerReducer = (state = initialState, action) => {
+type BookReducerInitState = typeof initialState;
+
+const bookHandlerReducer = (state: BookReducerInitState = initialState, action: AnyAction): BookReducerInitState => {
   switch (action.type) {
-    case ADD_BOOK:
+    case BooksActionsEnum.ADD_BOOK:
       return {
         ...state,
         books: [...state.books,
@@ -52,8 +60,8 @@ const bookHandlerReducer = (state = initialState, action) => {
         }
         ]
       }
-    case REMOVE_BOOK:
-      const idx = state.books.findIndex((el) => el.id === action.bookId);
+    case BooksActionsEnum.REMOVE_BOOK:
+      const idx = state.books.findIndex(el => el.id === +action.bookId);
       return {
         ...state,
         books: [
@@ -61,7 +69,7 @@ const bookHandlerReducer = (state = initialState, action) => {
           ...state.books.slice(idx + 1),
         ]
       }
-    case SEARCH_BOOK:
+    case BooksActionsEnum.SEARCH_BOOK:
       return {
         ...state,
         inputValue: action.inputValue,
@@ -74,6 +82,7 @@ const bookHandlerReducer = (state = initialState, action) => {
 
 export default bookHandlerReducer;
 
-export const addBook = (authorName, bookTitle, publicationDate) => ({ type: ADD_BOOK, authorName, bookTitle, publicationDate });
-export const removeBook = (bookId) => ({ type: REMOVE_BOOK, bookId });
-export const searchBook = (inputValue) => ({ type: SEARCH_BOOK, inputValue });
+
+export const addBook = (authorName: string, bookTitle: string, publicationDate: number) => ({ type: BooksActionsEnum.ADD_BOOK, authorName, bookTitle, publicationDate });
+export const removeBook = (bookId: string) => ({ type: BooksActionsEnum.REMOVE_BOOK, bookId });
+export const searchBook = (inputValue: string) => ({ type: BooksActionsEnum.SEARCH_BOOK, inputValue });
